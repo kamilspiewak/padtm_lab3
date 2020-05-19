@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.provider.MediaStore;
 import android.view.View;
@@ -19,6 +20,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        final FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,14 +73,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void kliknij(View obj){
         Toast.makeText(getApplicationContext(),"Kliknięto przycisk button!",Toast.LENGTH_SHORT).show();
-     //   Intent intencja = new Intent(this, LoginActivity.class);
-     //   startActivity(intencja);
+        Intent intencja = new Intent(this, LoginActivity.class);
+        startActivity(intencja);
     }
 
     public void aparat(View obj){
        Intent intencja = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
        startActivityForResult(intencja,REQUEST_IMAGE_CAPTURE);
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){

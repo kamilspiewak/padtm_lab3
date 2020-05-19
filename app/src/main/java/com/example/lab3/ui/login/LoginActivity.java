@@ -28,7 +28,7 @@ import com.example.lab3.ui.login.LoginViewModel;
 import com.example.lab3.ui.login.LoginViewModelFactory;
 
 public class LoginActivity extends AppCompatActivity {
-
+    String DUMMY_CREDS[] = {"kamil@wp.pl", "haslo"};
     private LoginViewModel loginViewModel;
 
     @Override
@@ -71,11 +71,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
+                    if(usernameEditText.getText().toString().equals("kamil") && passwordEditText.getText().toString().equals("haslo")){
+                        finish();
+                    }
                 }
                 setResult(Activity.RESULT_OK);
 
                 //Complete and destroy login activity once successful
-                finish();
+
+
             }
         });
 
